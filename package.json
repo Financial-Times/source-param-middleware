@@ -1,0 +1,38 @@
+{
+  "name": "@financial-times/source-param-middleware",
+  "version": "0.0.0",
+  "description": "Require a valid source parameter in Express requests.",
+  "keywords": [
+    "origami"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Financial-Times/source-param-middleware",
+  "bugs": {
+    "url": "https://github.com/Financial-Times/source-param-middleware/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Financial-Times/source-param-middleware.git"
+  },
+  "engines": {
+    "node": "^6",
+    "npm": "^4"
+  },
+  "main": "./lib/source-param-middleware.js",
+  "scripts": {
+    "test": "make verify test"
+  },
+  "dependencies": {
+    "http-errors": "^1.5.1",
+    "lodash": "^4.17.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.14.1",
+    "mocha": "^3.2.0",
+    "mockery": "^2.0.0",
+    "npm-prepublish": "^1.2.2",
+    "nyc": "^10.0.0",
+    "proclaim": "^3.4.4",
+    "sinon": "^1.17.6"
+  }
+}
