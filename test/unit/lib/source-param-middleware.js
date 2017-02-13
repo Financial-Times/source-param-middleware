@@ -294,6 +294,11 @@ describe('lib/middleware/require-source-param', () => {
 						});
 					});
 
+					it('logs that the system code cannot be verified', () => {
+						assert.called(options.log.warn);
+						assert.calledWithExactly(options.log.warn, 'CMDB warning: The system code "invalid" cannot be verified due to a CMDB failure');
+					});
+
 					it('calls back with no error', () => {
 						assert.isUndefined(middlewareError);
 					});
