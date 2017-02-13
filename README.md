@@ -47,7 +47,7 @@ This function returns a new middleware function which can be used to validate a 
 
 ```js
 const requireSourceParam = sourceParam({
-    errorMessage: 'The source parameter is required'
+    cmdbApiKey: 'xxxxxx'
 });
 
 app.get('/your-api-endpoint', requireSourceParam, (request, response) => {
@@ -59,7 +59,10 @@ app.get('/your-api-endpoint', requireSourceParam, (request, response) => {
 
 The Source Param Middleware can be configured with a variety of options, passed in as an object to the `sourceParam` function. The available options are as follows:
 
+  - `cmdbApiKey`: The [CMDB] API key used to validate the source parameter.
   - `errorMessage`: The error message to output if the source parameter is not present and valid. Defaults to `"The source parameter is required and should be a valid system code"`
+  - `pollInterval`: How often to check for new system codes on [CMDB] in milliseconds. Defaults to 60000 (1 minute)
+  - `verifyUsingCmdb`: Whether to verify that the source parameter is a valid system code using [CMDB]. Defaults to `true`
 
 
 Contributing
@@ -92,6 +95,7 @@ This software is published by the Financial Times under the [MIT licence][licens
 
 
 [#ft-origami]: https://financialtimes.slack.com/messages/ft-origami/
+[cmdb]: http://cmdb.ft.com/
 [express]: http://expressjs.com/
 [issues]: https://github.com/Financial-Times/source-param-middleware/issues
 [license]: http://opensource.org/licenses/MIT
