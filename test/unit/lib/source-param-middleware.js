@@ -61,6 +61,12 @@ describe('lib/middleware/require-source-param', () => {
 			assert.strictEqual(sourceParam.defaults.pollInterval, 300000);
 		});
 
+		it('has a `validationExceptions` property', () => {
+			assert.deepEqual(sourceParam.defaults.validationExceptions, [
+				'test'
+			]);
+		});
+
 		it('has a `verifyUsingCmdb` property', () => {
 			assert.isTrue(sourceParam.defaults.verifyUsingCmdb);
 		});
@@ -80,7 +86,11 @@ describe('lib/middleware/require-source-param', () => {
 				cmdbApiKey: 'mock-api-key',
 				errorMessage: 'mock-error-message',
 				log: log,
-				pollInterval: 123
+				pollInterval: 123,
+				validationExceptions: [
+					'exception',
+					'invalid exception ' + Array(256).fill('x').join('')
+				]
 			};
 			middleware = sourceParam(options);
 		});
@@ -220,6 +230,45 @@ describe('lib/middleware/require-source-param', () => {
 				beforeEach(done => {
 					httpError.reset();
 					express.mockRequest.query.source = 'invalid';
+					middleware(express.mockRequest, express.mockResponse, error => {
+						middlewareError = error;
+						done();
+					});
+				});
+
+				it('creates a 400 HTTP error with `options.errorMessage`', () => {
+					assert.calledOnce(httpError);
+					assert.calledWithExactly(httpError, 400, options.errorMessage);
+				});
+
+				it('calls back with the created error', () => {
+					assert.strictEqual(middlewareError, httpError.mockError);
+				});
+
+			});
+
+			describe('when the `source` query parameter is not found in CMDB but is a validation exception', () => {
+
+				beforeEach(done => {
+					httpError.reset();
+					express.mockRequest.query.source = 'exception';
+					middleware(express.mockRequest, express.mockResponse, error => {
+						middlewareError = error;
+						done();
+					});
+				});
+
+				it('calls back with no error', () => {
+					assert.isUndefined(middlewareError);
+				});
+
+			});
+
+			describe('when the `source` query parameter is a validation exception but an invalid format', () => {
+
+				beforeEach(done => {
+					httpError.reset();
+					express.mockRequest.query.source = 'invalid exception ' + Array(256).fill('x').join('');
 					middleware(express.mockRequest, express.mockResponse, error => {
 						middlewareError = error;
 						done();

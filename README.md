@@ -62,6 +62,7 @@ The Source Param Middleware can be configured with a variety of options, passed 
   - `cmdbApiKey`: The [CMDB] API key used to validate the source parameter.
   - `errorMessage`: The error message to output if the source parameter is not present and valid. Defaults to `"The source parameter is required and should be a valid system code"`
   - `pollInterval`: How often to check for new system codes on [CMDB] in milliseconds. Defaults to 60000 (1 minute)
+  - `validationExceptions`: An array of source parameter values which should always pass validation, bypassing CMDB checks. These values are still required to be between 1 and 255 characters in length. Defaults to `["test"]`
   - `verifyUsingCmdb`: Whether to verify that the source parameter is a valid system code using [CMDB]. Defaults to `true`
 
 
