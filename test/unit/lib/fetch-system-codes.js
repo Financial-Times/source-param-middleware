@@ -2,11 +2,14 @@
 
 const assert = require('proclaim');
 const mockery = require('mockery');
+const pkg = require('../../../package.json');
 
 describe('lib/middleware/fetch-system-codes', () => {
+	let expectedHeaders;
 	let fetchSystemCodes;
 	let httpError;
 	let request;
+	let userAgent;
 
 	beforeEach(() => {
 		httpError = require('../mock/http-errors.mock');
@@ -14,6 +17,11 @@ describe('lib/middleware/fetch-system-codes', () => {
 
 		request = require('../mock/request.mock');
 		mockery.registerMock('request', request);
+
+		userAgent = `${pkg.name}@${pkg.version} (${pkg.homepage})`;
+		expectedHeaders = {
+			'User-Agent': userAgent
+		};
 
 		fetchSystemCodes = require('../../../lib/fetch-system-codes');
 	});
@@ -75,14 +83,17 @@ describe('lib/middleware/fetch-system-codes', () => {
 		it('calls `request` for each page of system codes', () => {
 			assert.calledThrice(request);
 			assert.calledWith(request.getCall(0), {
+				headers: expectedHeaders,
 				json: true,
 				url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&apikey=mock-api-key&page=1'
 			});
 			assert.calledWith(request.getCall(1), {
+				headers: expectedHeaders,
 				json: true,
 				url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&apikey=mock-api-key&page=2'
 			});
 			assert.calledWith(request.getCall(2), {
+				headers: expectedHeaders,
 				json: true,
 				url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&apikey=mock-api-key&page=3'
 			});
@@ -111,6 +122,7 @@ describe('lib/middleware/fetch-system-codes', () => {
 			it('calls `request` once', () => {
 				assert.calledOnce(request);
 				assert.calledWith(request.getCall(0), {
+					headers: expectedHeaders,
 					json: true,
 					url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&apikey=mock-api-key&page=1'
 				});
@@ -139,6 +151,7 @@ describe('lib/middleware/fetch-system-codes', () => {
 			it('calls `request` once', () => {
 				assert.calledOnce(request);
 				assert.calledWith(request.getCall(0), {
+					headers: expectedHeaders,
 					json: true,
 					url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&apikey=mock-api-key&page=1'
 				});
