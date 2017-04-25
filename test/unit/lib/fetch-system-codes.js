@@ -20,7 +20,8 @@ describe('lib/middleware/fetch-system-codes', () => {
 
 		userAgent = `${pkg.name}@${pkg.version} (${pkg.homepage})`;
 		expectedHeaders = {
-			'User-Agent': userAgent
+			'User-Agent': userAgent,
+			'X-Api-Key': 'mock-api-key'
 		};
 
 		fetchSystemCodes = require('../../../lib/fetch-system-codes');
@@ -85,17 +86,17 @@ describe('lib/middleware/fetch-system-codes', () => {
 			assert.calledWith(request.getCall(0), {
 				headers: expectedHeaders,
 				json: true,
-				url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&apikey=mock-api-key&page=1'
+				url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&page=1'
 			});
 			assert.calledWith(request.getCall(1), {
 				headers: expectedHeaders,
 				json: true,
-				url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&apikey=mock-api-key&page=2'
+				url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&page=2'
 			});
 			assert.calledWith(request.getCall(2), {
 				headers: expectedHeaders,
 				json: true,
-				url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&apikey=mock-api-key&page=3'
+				url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&page=3'
 			});
 		});
 
@@ -124,7 +125,7 @@ describe('lib/middleware/fetch-system-codes', () => {
 				assert.calledWith(request.getCall(0), {
 					headers: expectedHeaders,
 					json: true,
-					url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&apikey=mock-api-key&page=1'
+					url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&page=1'
 				});
 			});
 
@@ -153,7 +154,7 @@ describe('lib/middleware/fetch-system-codes', () => {
 				assert.calledWith(request.getCall(0), {
 					headers: expectedHeaders,
 					json: true,
-					url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&apikey=mock-api-key&page=1'
+					url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&page=1'
 				});
 			});
 
