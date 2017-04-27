@@ -46,8 +46,9 @@ describe('lib/middleware/fetch-system-codes', () => {
 					count: 'Pages: 3, Items: 4'
 				},
 				body: [
-					{value: 'foo'},
-					{value: 'bar'}
+					{systemCode: 'foo'},
+					{noSystemCode: 'this should not appear'},
+					{systemCode: 'bar'}
 				]
 			};
 			mockResponse2 = {
@@ -56,7 +57,8 @@ describe('lib/middleware/fetch-system-codes', () => {
 					count: 'Pages: 3, Items: 4'
 				},
 				body: [
-					{value: 'baz'}
+					{noSystemCode: 'this should not appear'},
+					{systemCode: 'baz'}
 				]
 			};
 			mockResponse3 = {
@@ -65,7 +67,7 @@ describe('lib/middleware/fetch-system-codes', () => {
 					count: 'Pages: 3, Items: 4'
 				},
 				body: [
-					{value: 'qux'}
+					{systemCode: 'qux'}
 				]
 			};
 			request.onCall(0).yields(null, mockResponse1);
@@ -86,17 +88,17 @@ describe('lib/middleware/fetch-system-codes', () => {
 			assert.calledWith(request.getCall(0), {
 				headers: expectedHeaders,
 				json: true,
-				url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&page=1'
+				url: 'https://cmdb.in.ft.com/v3/items/system?page=1&limit=250'
 			});
 			assert.calledWith(request.getCall(1), {
 				headers: expectedHeaders,
 				json: true,
-				url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&page=2'
+				url: 'https://cmdb.in.ft.com/v3/items/system?page=2&limit=250'
 			});
 			assert.calledWith(request.getCall(2), {
 				headers: expectedHeaders,
 				json: true,
-				url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&page=3'
+				url: 'https://cmdb.in.ft.com/v3/items/system?page=3&limit=250'
 			});
 		});
 
@@ -125,7 +127,7 @@ describe('lib/middleware/fetch-system-codes', () => {
 				assert.calledWith(request.getCall(0), {
 					headers: expectedHeaders,
 					json: true,
-					url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&page=1'
+					url: 'https://cmdb.in.ft.com/v3/items/system?page=1&limit=250'
 				});
 			});
 
@@ -154,7 +156,7 @@ describe('lib/middleware/fetch-system-codes', () => {
 				assert.calledWith(request.getCall(0), {
 					headers: expectedHeaders,
 					json: true,
-					url: 'https://cmdb.ft.com/v2/itemattributes/?attributeType=systemCode&page=1'
+					url: 'https://cmdb.in.ft.com/v3/items/system?page=1&limit=250'
 				});
 			});
 
