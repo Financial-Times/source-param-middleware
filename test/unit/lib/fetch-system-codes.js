@@ -46,9 +46,9 @@ describe('lib/middleware/fetch-system-codes', () => {
 					count: 'Pages: 3, Items: 4'
 				},
 				body: [
-					{systemCode: 'foo'},
-					{noSystemCode: 'this should not appear'},
-					{systemCode: 'bar'}
+					{dataItemID: 'foo'},
+					{noDataItemID: 'this should not appear'},
+					{dataItemID: 'bar'}
 				]
 			};
 			mockResponse2 = {
@@ -57,8 +57,8 @@ describe('lib/middleware/fetch-system-codes', () => {
 					count: 'Pages: 3, Items: 4'
 				},
 				body: [
-					{noSystemCode: 'this should not appear'},
-					{systemCode: 'baz'}
+					{noDataItemID: 'this should not appear'},
+					{dataItemID: 'baz'}
 				]
 			};
 			mockResponse3 = {
@@ -67,7 +67,7 @@ describe('lib/middleware/fetch-system-codes', () => {
 					count: 'Pages: 3, Items: 4'
 				},
 				body: [
-					{systemCode: 'qux'}
+					{dataItemID: 'qux'}
 				]
 			};
 			request.onCall(0).yields(null, mockResponse1);
