@@ -23,18 +23,17 @@
     "test": "make verify test"
   },
   "dependencies": {
-    "http-errors": "^1.5.1",
-    "lodash": "^4.17.2",
-    "request": "^2.79.0"
+    "http-errors": "^1.6.2",
+    "lodash": "^4.17.4",
+    "request": "^2.83.0"
   },
   "devDependencies": {
-    "eslint": "^3.14.1",
-    "mocha": "^3.2.0",
-    "mockery": "^2.0.0",
-    "npm-prepublish": "^1.2.2",
-    "nyc": "^10.0.0",
-    "proclaim": "^3.4.4",
-    "sinon": "^1.17.6",
-    "sinon-as-promised": "^4.0.2"
+    "eslint": "^4.9.0",
+    "mocha": "^4.0.1",
+    "mockery": "^2.1.0",
+    "npm-prepublish": "^1.2.3",
+    "nyc": "^11.2.1",
+    "proclaim": "^3.5.0",
+    "sinon": "^4.0.1"
   }
 }
