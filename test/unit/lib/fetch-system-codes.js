@@ -115,7 +115,7 @@ describe('lib/middleware/fetch-system-codes', () => {
 		describe('when a `Count` header is not present in the response', () => {
 
 			beforeEach(() => {
-				request.reset();
+				request.resetHistory();
 				delete mockResponse1.headers.count;
 				return returnedPromise = fetchSystemCodes('mock-api-key').then(value => {
 					resolvedValue = value;
@@ -144,7 +144,7 @@ describe('lib/middleware/fetch-system-codes', () => {
 		describe('when the `Count` header in the response is malformed', () => {
 
 			beforeEach(() => {
-				request.reset();
+				request.resetHistory();
 				mockResponse1.headers.count = 'Pages: one, Items: 2';
 				return returnedPromise = fetchSystemCodes('mock-api-key').then(value => {
 					resolvedValue = value;
@@ -175,7 +175,7 @@ describe('lib/middleware/fetch-system-codes', () => {
 			let caughtError;
 
 			beforeEach(() => {
-				request.reset();
+				request.resetHistory();
 				requestError = new Error('request error');
 				request.onCall(0).yields(requestError);
 				return returnedPromise = fetchSystemCodes('mock-api-key').catch(error => {
@@ -193,7 +193,7 @@ describe('lib/middleware/fetch-system-codes', () => {
 			let caughtError;
 
 			beforeEach(() => {
-				request.reset();
+				request.resetHistory();
 				mockResponse1.statusCode = 400;
 				return returnedPromise = fetchSystemCodes('mock-api-key').catch(error => {
 					caughtError = error;
