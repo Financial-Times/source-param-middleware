@@ -112,7 +112,7 @@ describe('lib/middleware/require-source-param', () => {
 			let interval;
 
 			beforeEach(() => {
-				fetchSystemCodes.reset();
+				fetchSystemCodes.resetHistory();
 				interval = setInterval.firstCall.args[0];
 				interval();
 			});
@@ -162,7 +162,7 @@ describe('lib/middleware/require-source-param', () => {
 			describe('when the `source` query parameter is missing', () => {
 
 				beforeEach(done => {
-					httpError.reset();
+					httpError.resetHistory();
 					delete express.mockRequest.query.source;
 					middleware(express.mockRequest, express.mockResponse, error => {
 						middlewareError = error;
@@ -184,7 +184,7 @@ describe('lib/middleware/require-source-param', () => {
 			describe('when the `source` query parameter is an empty string', () => {
 
 				beforeEach(done => {
-					httpError.reset();
+					httpError.resetHistory();
 					express.mockRequest.query.source = '';
 					middleware(express.mockRequest, express.mockResponse, error => {
 						middlewareError = error;
@@ -206,7 +206,7 @@ describe('lib/middleware/require-source-param', () => {
 			describe('when the `source` query parameter is longer than 255 characters', () => {
 
 				beforeEach(done => {
-					httpError.reset();
+					httpError.resetHistory();
 					express.mockRequest.query.source = Array(256).fill('x').join('');
 					middleware(express.mockRequest, express.mockResponse, error => {
 						middlewareError = error;
@@ -228,7 +228,7 @@ describe('lib/middleware/require-source-param', () => {
 			describe('when the `source` query parameter is not found in CMDB', () => {
 
 				beforeEach(done => {
-					httpError.reset();
+					httpError.resetHistory();
 					express.mockRequest.query.source = 'invalid';
 					middleware(express.mockRequest, express.mockResponse, error => {
 						middlewareError = error;
@@ -250,7 +250,7 @@ describe('lib/middleware/require-source-param', () => {
 			describe('when the `source` query parameter is not found in CMDB but is a validation exception', () => {
 
 				beforeEach(done => {
-					httpError.reset();
+					httpError.resetHistory();
 					express.mockRequest.query.source = 'exception';
 					middleware(express.mockRequest, express.mockResponse, error => {
 						middlewareError = error;
@@ -267,7 +267,7 @@ describe('lib/middleware/require-source-param', () => {
 			describe('when the `source` query parameter is a validation exception but an invalid format', () => {
 
 				beforeEach(done => {
-					httpError.reset();
+					httpError.resetHistory();
 					express.mockRequest.query.source = 'invalid exception ' + Array(256).fill('x').join('');
 					middleware(express.mockRequest, express.mockResponse, error => {
 						middlewareError = error;
@@ -291,7 +291,7 @@ describe('lib/middleware/require-source-param', () => {
 		describe('when `options.verifyUsingCmdb` is `false`', () => {
 
 			beforeEach(() => {
-				setInterval.reset();
+				setInterval.resetHistory();
 				options.verifyUsingCmdb = false;
 				middleware = sourceParam(options);
 			});
