@@ -1,0 +1,14 @@
+{
+	"description": "Require a valid source parameter in Express requests.",
+	"origamiType": null,
+	"origamiVersion": 1,
+	"keywords": [
+		"origami"
+	],
+	"support": "https://github.com/Financial-Times/source-param-middleware/issues",
+	"supportStatus": "active",
+	"supportContact": {
+		"email": "origami.support@ft.com",
+		"slack": "financialtimes/ft-origami"
+	}
+}
