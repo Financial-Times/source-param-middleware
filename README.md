@@ -85,7 +85,7 @@ New versions of the module are published automatically by CI when a new tag is c
 Contact
 -------
 
-If you have any questions or comments about this module, or need help using it, please either [raise an issue][issues], visit [#ft-origami] or email [Origami Support].
+If you have any questions or comments about this module, or need help using it, please either [raise an issue][issues], visit [#origami-support] or email [Origami Support].
 
 
 Licence
@@ -95,7 +95,7 @@ This software is published by the Financial Times under the [MIT licence][licens
 
 
 
-[#ft-origami]: https://financialtimes.slack.com/messages/ft-origami/
+[#origami-support]: https://financialtimes.slack.com/messages/origami-support/
 [cmdb]: http://cmdb.ft.com/
 [express]: http://expressjs.com/
 [issues]: https://github.com/Financial-Times/source-param-middleware/issues
