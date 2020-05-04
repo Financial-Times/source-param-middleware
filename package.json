@@ -20,12 +20,15 @@
   },
   "main": "./lib/source-param-middleware.js",
   "scripts": {
-    "test": "make verify test"
+    "test": "make verify test",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "http-errors": "^1.6.2",
     "lodash": "^4.17.4",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "snyk": "^1.317.0"
   },
   "devDependencies": {
     "@financial-times/origami-service-makefile": "^6.0.1",
@@ -36,5 +39,6 @@
     "nyc": "^11.2.1",
     "proclaim": "^3.5.0",
     "sinon": "^4.0.1"
-  }
+  },
+  "snyk": true
 }
