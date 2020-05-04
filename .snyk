@@ -21,3 +21,4 @@ patch:
   'npm:stringstream:20180511':
     - request > stringstream:
         patched: '2020-05-04T15:02:14.061Z'
+
