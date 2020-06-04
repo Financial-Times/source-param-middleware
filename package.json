@@ -28,7 +28,7 @@
     "http-errors": "^1.6.2",
     "lodash": "^4.17.4",
     "request": "^2.83.0",
-    "snyk": "^1.317.0"
+    "snyk": "^1.336.0"
   },
   "devDependencies": {
     "@financial-times/origami-service-makefile": "^7.0.3",
