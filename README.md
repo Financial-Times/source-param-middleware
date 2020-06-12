@@ -1,16 +1,8 @@
-
-Source Param Middleware
-=======================
+# Source Param Middleware [![NPM version](https://img.shields.io/npm/v/@financial-times/source-param-middleware.svg)](https://www.npmjs.com/package/@financial-times/source-param-middleware) [![Build status](https://img.shields.io/circleci/project/Financial-Times/source-param-middleware.svg)](https://circleci.com/gh/Financial-Times/source-param-middleware) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)][license]
 
 Middleware to require a valid source parameter in [Express] requests.
 
-[![NPM version](https://img.shields.io/npm/v/@financial-times/source-param-middleware.svg)](https://www.npmjs.com/package/@financial-times/source-param-middleware)
-[![Build status](https://img.shields.io/circleci/project/Financial-Times/source-param-middleware.svg)](https://circleci.com/gh/Financial-Times/source-param-middleware)
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)][license]
-
-
-Table Of Contents
------------------
+## Table Of Contents
 
   - [Usage](#usage)
     - [Requirements](#requirements)
@@ -18,16 +10,16 @@ Table Of Contents
     - [Options](#options)
   - [Contributing](#contributing)
   - [Publishing](#publishing)
+  - [Migration guides](#migration-guides)
   - [Contact](#contact)
   - [Licence](#licence)
 
 
-Usage
------
+## Usage
 
 ### Requirements
 
-Running the Source Param Middleware requires [Node.js] 6.x and [npm]. You can install with:
+Running the Source Param Middleware requires [Node.js] 10.x and [npm]. You can install with:
 
 ```sh
 npm install @financial-times/source-param-middleware
@@ -66,8 +58,7 @@ The Source Param Middleware can be configured with a variety of options, passed 
   - `verifyUsingCmdb`: Whether to verify that the source parameter is a valid system code using [CMDB]. Defaults to `true`
 
 
-Contributing
-------------
+## Contributing
 
 This module has a full suite of unit tests, and is verified with ESLint. You can use the following commands to check your code before opening a pull request.
 
@@ -76,23 +67,25 @@ make verify  # verify JavaScript code with ESLint
 make test    # run the unit tests and check coverage
 ```
 
-Publishing
-----------
+## Publishing
 
 New versions of the module are published automatically by CI when a new tag is created matching the pattern `/v.*/`.
 
+## Migration Guides
 
-Contact
--------
+State | Major Version | Last Minor Release | Migration guide |
+:---: | :---: | :---: | :---:
+✨ active | 2 | N/A | [migrate to v2](MIGRATION.md#migrating-from-v1-to-v2) |
+⚠ maintained | 1 | 1.0 | N/A |
+
+## Contact
 
 If you have any questions or comments about this module, or need help using it, please either [raise an issue][issues], visit [#origami-support] or email [Origami Support].
 
 
-Licence
--------
+## Licence
 
 This software is published by the Financial Times under the [MIT licence][license].
-
 
 
 [#origami-support]: https://financialtimes.slack.com/messages/origami-support/

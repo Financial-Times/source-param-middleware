@@ -15,8 +15,8 @@
     "url": "https://github.com/Financial-Times/source-param-middleware.git"
   },
   "engines": {
-    "node": ">=6",
-    "npm": ">=4"
+    "node": ">=10",
+    "npm": ">=5"
   },
   "main": "./lib/source-param-middleware.js",
   "scripts": {
