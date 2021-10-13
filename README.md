@@ -2,6 +2,8 @@
 
 Middleware to require a valid source parameter in [Express] requests.
 
+**Deprecated: The CMDB API used by this package no longer exists. There is no direct replacement at the time of writing but there is an example of [similar functionality implemented within the Origami Build Service](https://github.com/Financial-Times/origami-build-service/blob/a4a81e5fff26f41e95ddddba76cda5f8fefdb8b7/lib/middleware/v3/parseSystemCodeParameter.js#L49).**
+
 ## Table Of Contents
 
   - [Usage](#usage)
